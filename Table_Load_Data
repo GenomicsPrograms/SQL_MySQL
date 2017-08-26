@@ -1,0 +1,6 @@
+
+mysql> create table 1KGmutationRSID(chrom VARCHAR(5), start BIGINT(20), stop BIGINT(20), ref VARCHAR(130), alt VARCHAR(255), pos BIGINT(20), mutations_flag VARCHAR(1), rsid VARCHAR(72));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> LOAD DATA LOCAL INFILE '/home/evomedinfo/margaret/mutations/mysql_JOINED_mutations.txt' INTO TABLE 1KGmutationRSID fields terminated by " ";
+
