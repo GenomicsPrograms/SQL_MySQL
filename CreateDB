@@ -1,0 +1,4 @@
+CREATE DATABASE cadd_score;
+USE cadd_score;
+CREATE TABLE cadd(chrom TINYINT, pos BIGINT, ref_allele VARCHAR(255), alt_allele VARCHAR(255), raw_score DECIMAL(18,9) phred DECIMAL(18,9));
+LOAD DATA LOCAL INFILE 'whole_genome_SNVs.tsv' INTO TABLE cadd.cadd;
