@@ -1,0 +1,17 @@
+
+CREATE DATABASE mutations;
+
+
+USE mutations;
+
+SELECT  u1kg.chrom, u1kg.pos, u1kg.ref_allele, u1kg.alt_allele, chrbk.chrom, chrbk.chrom_start, chrbk.ref_allele, chrbk.alt_allele 
+
+FROM  1kgcadd.united1KGcadd as u1kg, LINAN_test.gcounts_test as chrbk FOR UPDATE;
+
+UPDATE gcounts.allchrbk chrbk, LINAN.1kgcadd u1kg 
+SET u1kg.1KG_flag = 1
+
+WHERE u1kg.chrom = chrbk.chrom 
+AND u1kg.pos = chrbk.chrom_start 
+AND u1kg.ref_allele = chrbk.ref_allele 
+AND u1kg.alt_allele = chrbk.alt_allele;
