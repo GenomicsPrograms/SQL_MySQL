@@ -1,0 +1,2 @@
+CREATE TABLE 1KGmutationID(chrom varchar(5), chrom_start bigint(20), chrom_end bigint(20), ref_allele varchar(255), alt_allele varchar(255), poskey bigint(20), mut_flag double, rsid varchar(144))
+SELECT a.chrom, a.chrom_start, a.chrom_end, a.ref_allele, a.alt_allele, a.poskey, a.mut_flag, b.rsid FROM 1KGmutation a LEFT JOIN VCFrsid b ON a.chrom=b.chrom AND a.chrom_start=b.pos;
