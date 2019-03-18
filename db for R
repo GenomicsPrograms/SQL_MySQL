@@ -1,0 +1,20 @@
+library(DBI)
+conn <- dbConnect(
+    drv = RMySQL::MySQL(),
+    dbname = "shinydemo",
+    host = "shiny-demo.csa7qlmguqrf.us-east-1.rds.amazonaws.com",
+    username = "guest",
+    password = "guest")
+rs <- dbSendQuery(conn, "SELECT * FROM City LIMIT 5;")
+dbFetch(rs)
+##   ID           Name CountryCode      District Population
+## 1  1          Kabul         AFG         Kabol    1780000
+## 2  2       Qandahar         AFG      Qandahar     237500
+## 3  3          Herat         AFG         Herat     186800
+## 4  4 Mazar-e-Sharif         AFG         Balkh     127800
+## 5  5      Amsterdam         NLD Noord-Holland     731200
+
+df <- dbFetch(rs)
+
+dbClearResult(rs)
+dbDisconnect(conn)
